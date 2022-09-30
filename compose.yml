@@ -1,0 +1,85 @@
+version: "3.9"
+
+services:
+  mongo-db:
+    container_name: mongo-db
+    image: mongo:6.0.1
+    restart: always
+    networks:
+      - mongo
+    volumes:
+      - mongo-content:/data/db
+      - mongo-config:/data/configdb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123
+  
+
+  mongo-adm:
+    container_name: mongo-adm
+    image: mongo-express:1.0.0-alpha
+    restart: always
+    networks:
+      - mongo
+      - server
+    depends_on:
+      - mongo-db
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:123@mongo-db:27017/
+      ME_CONFIG_SITE_BASEURL: /nosql/
+  
+
+  mysql-db:
+    container_name: mysql-db
+    image: mysql:8.0.30
+    restart: always
+    networks:
+      - mysql
+    volumes:
+      - mysql-content:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1 
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 123
+
+
+  mysql-adm:
+    container_name: mysql-adm
+    image: adminer:4.8.1
+    restart: always
+    networks:
+      - mysql
+      - server
+    depends_on:
+      - mysql-db
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql-db
+
+
+  pr-server:
+    container_name: server
+    image: proxy-reverse-server:1.1
+    build: ./pr-server/
+    restart: always
+    networks:
+      - server
+    ports:
+      - 80:80
+    depends_on:
+      - mysql-adm
+      - mongo-adm
+
+
+volumes:
+  mongo-content:
+  mongo-config:
+  mysql-content:
+
+
+networks:
+  mongo:
+  mysql:
+  server:
