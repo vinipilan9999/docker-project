@@ -61,7 +61,7 @@ services:
 
   pr-server:
     container_name: server
-    image: proxy-reverse-server:1.1
+    image: proxy-reverse-server:1.0
     build: ./pr-server/
     restart: always
     networks:
