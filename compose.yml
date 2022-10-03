@@ -118,9 +118,24 @@ services:
 
   pr-server:
     container_name: server
-    image: proxy-reverse-server:1.0
-    build: ./pr-server/
+    image: vinipilan9999/proxy-reverse-server:1.0
+    # build: ./pr-server/
+    read_only: true
     restart: always
+    tmpfs:                 
+      - /home  
+      - /mnt   
+      - /run   
+      - /srv  
+      - /tmp  
+      - /boot  
+      - /docker-entrypoint.d                    
+      - /media  
+      - /opt  
+      - /root  
+      - /sbin  
+      - /sys  
+      - /var/cache/nginx
     networks:
       - server
     ports:
