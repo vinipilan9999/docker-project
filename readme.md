@@ -4,7 +4,7 @@
 O sistema conta ao todo com 05 containers:
 1. **NGINX:** Servidor para proxy reverse do sistema
 2. **MongoExpress:** Administrador do banco NoSQL MongoDB
-3. **Mongo:** Banco de dados NOSQL
+3. **Mongo:** Banco de dados NoSQL
 4. **MySQL:** Banco de dados SQL
 5. **Adminer:** Administrador do banco SQL MySQL
 
