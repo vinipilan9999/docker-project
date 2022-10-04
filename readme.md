@@ -2,4 +2,4 @@
 
 ## Funcionamento do projeto
 
-![img](system.jpg)
+![img](pr-server/html/system.jpg)

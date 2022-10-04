@@ -1,6 +1,37 @@
 version: "3.9"
 
 services:
+  pr-server:
+    container_name: server
+    image: vinipilan9999/proxy-reverse-server:2.0
+    build: ./pr-server/
+    read_only: true
+    restart: always
+    tmpfs:                 
+      - /home  
+      - /mnt   
+      - /run   
+      - /srv  
+      - /tmp  
+      - /boot  
+      - /docker-entrypoint.d                    
+      - /media  
+      - /opt  
+      - /root  
+      - /sbin  
+      - /sys  
+      - /var/cache/nginx
+    networks:
+      - server
+    ports:
+      - 80:80
+    depends_on:
+      - mysql-adm
+      - mongo-adm
+    # volumes:
+    #   - ./pr-server/conf.d/:/etc/nginx/conf.d/
+
+
   mongo-db:
     container_name: mongo-db
     image: mongo:6.0.1
@@ -115,34 +146,6 @@ services:
     environment:
       ADMINER_DEFAULT_SERVER: mysql-db
 
-
-  pr-server:
-    container_name: server
-    image: vinipilan9999/proxy-reverse-server:1.0
-    # build: ./pr-server/
-    read_only: true
-    restart: always
-    tmpfs:                 
-      - /home  
-      - /mnt   
-      - /run   
-      - /srv  
-      - /tmp  
-      - /boot  
-      - /docker-entrypoint.d                    
-      - /media  
-      - /opt  
-      - /root  
-      - /sbin  
-      - /sys  
-      - /var/cache/nginx
-    networks:
-      - server
-    ports:
-      - 80:80
-    depends_on:
-      - mysql-adm
-      - mongo-adm
 
 
 volumes:
