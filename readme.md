@@ -14,6 +14,6 @@ O sistema conta ao todo com 05 containers:
 - */* acessa a página de informações
 
 ## Funcionamento do projeto
-Para acessar o servidor enquanto o mesmo está em execução, basta acessar a porta 80 do localhost utilizando o navegador. Para acessar as demais páginas, utilize as url parciais descritas no tópico acima junto com a url base do servidor (localhost).
+Para acessar o servidor enquanto o mesmo está em execução, basta acessar a porta 80 do localhost utilizando o navegador. Para acessar as demais páginas, utilize as url's parciais descritas no tópico acima junto com a url base do servidor (localhost).
 
 ![img](pr-server/html/system.jpg)
