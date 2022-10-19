@@ -16,4 +16,4 @@ O sistema conta ao todo com 05 containers:
 ## Funcionamento do projeto
 Para acessar o servidor enquanto o mesmo está em execução, basta acessar a porta 80 do localhost utilizando o navegador. Para acessar as demais páginas, utilize as url's parciais descritas no tópico acima junto com a url base do servidor (localhost). Ex: localhost/nosql
 
-![img](pr-server/html/system.jpg)
+![img](pr-server/html/help_page/system.jpg)
