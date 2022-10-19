@@ -20,4 +20,4 @@ Este é o arquivo que contém as variáveis que podem ter seus valores alterados
 ## Funcionamento do projeto
 Para acessar o servidor enquanto o mesmo está em execução, basta acessar a porta 80 do localhost utilizando o navegador. Para acessar as demais páginas, utilize as url's parciais descritas no tópico acima junto com a url base do servidor (localhost). Ex: http://localhost/nosql (porta 80 por padrão e por isso não é necessário escrita de localhost:80/nosql).
 
-![img](pr-server/html/help_page/system.jpg)
+![img](pr-server/html/help_page/system_img.jpg)
