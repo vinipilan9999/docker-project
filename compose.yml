@@ -7,22 +7,13 @@ services:
     build: ./pr-server/
     read_only: true
     restart: always
-    tmpfs:                 
-      - /home  
-      - /mnt   
+    tmpfs:                   
       - /run   
-      - /srv  
       - /tmp  
-      - /boot  
-      - /docker-entrypoint.d                    
-      - /media  
-      - /opt  
-      - /root  
-      - /sbin  
-      - /sys  
       - /var/cache/nginx
     # volumes:
     #   - ./pr-server/conf.d:/etc/nginx/conf.d    ## Bind mount para dev.
+    #   - ./html:/usr/share/nginx/html            ## Bind mount para dev.
     networks:
       - server
     ports:
@@ -38,22 +29,8 @@ services:
     read_only: true
     restart: always
     tmpfs:
-      - /tmp
-      - /data
-      - /home
-      - /media  
-      - /opt   
-      - /root  
-      - /sbin  
-      - /sys  
-      - /boot                            
-      - /lib32  
-      - /libx32  
-      - /mnt    
+      - /tmp 
       - /run   
-      - /srv   
-      - /var
-      - /docker-entrypoint-initdb.d
     networks:
       - mongo
     volumes:
@@ -70,18 +47,7 @@ services:
     read_only: true
     restart: always
     tmpfs:
-      - /etc
       - /tmp
-      - /data
-      - /home
-      - /media  
-      - /opt   
-      - /root   
-      - /sys              
-      - /mnt    
-      - /run   
-      - /srv   
-      - /var
     networks:
       - mongo
       - server
@@ -98,19 +64,8 @@ services:
     read_only: true
     restart: always
     tmpfs:
-      - /boot
-      - /docker-entrypoint-initdb.d
-      - /home
-      - /lib
-      - /media
-      - /mnt
-      - /opt
-      - /root
       - /run
-      - /srv
-      - /sys
       - /tmp
-      - /var
     networks:
       - mysql
     volumes:
@@ -127,16 +82,7 @@ services:
     image: adminer:4.8.1
     read_only: true
     restart: always
-    tmpfs:
-      - /etc    
-      - /home    
-      - /media  
-      - /mnt    
-      - /opt     
-      - /root     
-      - /sbin   
-      - /srv   
-      - /sys    
+    tmpfs:  
       - /tmp    
     networks:
       - mysql
