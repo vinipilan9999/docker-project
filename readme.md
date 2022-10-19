@@ -1,4 +1,4 @@
-# Projeto 01 - Implementando sistema com Docker compose
+# Implementando sistema com Docker compose
 
 ## Sobre o sistema criado
 O sistema conta ao todo com 05 containers:
