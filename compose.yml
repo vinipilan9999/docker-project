@@ -3,7 +3,8 @@ version: "3.9"
 services:
   pr-server:
     container_name: server
-    image: vinipilan9999/proxy-reverse-server:2.0
+    image: vinipilan9999/proxy-reverse-server:3.0
+    build: ./pr-server/
     read_only: true
     restart: always
     tmpfs:                 
@@ -20,6 +21,8 @@ services:
       - /sbin  
       - /sys  
       - /var/cache/nginx
+    # volumes:
+    #   - ./pr-server/conf.d:/etc/nginx/conf.d    ## Bind mount para dev.
     networks:
       - server
     ports:
