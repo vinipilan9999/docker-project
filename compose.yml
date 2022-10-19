@@ -17,7 +17,7 @@ services:
     networks:
       - server
     ports:
-      - 80:80
+      - ${LOCAL_PORT}:80
     depends_on:
       - mysql-adm
       - mongo-adm
@@ -37,8 +37,8 @@ services:
       - mongo-content:/data/db
       - mongo-config:/data/configdb
     environment:
-      MONGO_INITDB_ROOT_USERNAME: vinicius
-      MONGO_INITDB_ROOT_PASSWORD: 1234
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
   
 
   mongo-adm:
@@ -54,7 +54,7 @@ services:
     depends_on:
       - mongo-db
     environment:
-      ME_CONFIG_MONGODB_URL: mongodb://vinicius:1234@mongo-db:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongo-db:27017/
       ME_CONFIG_SITE_BASEURL: /nosql/
   
 
@@ -72,9 +72,9 @@ services:
       - mysql-content:/var/lib/mysql
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 1 
-      MYSQL_DATABASE: db
-      MYSQL_USER: vinicius
-      MYSQL_PASSWORD: 1234
+      MYSQL_DATABASE: ${MYSQL_DATABASE_NAME}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
 
   mysql-adm:
