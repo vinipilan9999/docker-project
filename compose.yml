@@ -21,6 +21,11 @@ services:
     depends_on:
       - mysql-adm
       - mongo-adm
+    deploy:
+        resources:
+            limits:
+              cpus: "0.50"
+              memory: 100M
       
 
   mongo-db:
@@ -39,6 +44,12 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    deploy:
+        resources:
+            limits:
+              cpus: "0.50"
+              memory: 700M
+
   
 
   mongo-adm:
@@ -56,6 +67,11 @@ services:
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongo-db:27017/
       ME_CONFIG_SITE_BASEURL: /nosql/
+    deploy:
+        resources:
+            limits:
+              cpus: "0.50"
+              memory: 150M
   
 
   mysql-db:
@@ -75,6 +91,11 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE_NAME}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    deploy:
+        resources:
+            limits:
+              cpus: "0.50"
+              memory: 1.2G
 
 
   mysql-adm:
@@ -91,6 +112,11 @@ services:
       - mysql-db
     environment:
       ADMINER_DEFAULT_SERVER: mysql-db
+    deploy:
+        resources:
+            limits:
+              cpus: "0.50"
+              memory: 50M
 
 
 

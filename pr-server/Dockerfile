@@ -10,4 +10,3 @@ COPY /html/help/* /usr/share/nginx/html/help
 COPY /html/index/* /usr/share/nginx/html/index
 
 USER nginx
-
