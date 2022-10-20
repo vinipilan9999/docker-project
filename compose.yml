@@ -51,7 +51,6 @@ services:
               memory: 700M
 
   
-
   mongo-adm:
     container_name: mongo-adm
     image: mongo-express:1.0.0-alpha
@@ -82,6 +81,7 @@ services:
     tmpfs:
       - /run
       - /tmp
+      - /usr/share
     networks:
       - mysql
     volumes:
