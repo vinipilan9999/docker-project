@@ -81,7 +81,6 @@ services:
     tmpfs:
       - /run
       - /tmp
-      - /usr/share
     networks:
       - mysql
     volumes:
